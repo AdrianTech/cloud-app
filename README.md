@@ -1,7 +1,8 @@
-##Technology stack:
+<strong>Technology stack:</strong>
 <ul><li>HTML</li>
   <li>SCSS</li>
   <li>React.js</li>
+  <li>Rest API</li>
 </ul>
 
 <strong>Description:</strong>
