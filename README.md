@@ -8,4 +8,4 @@
 
 <strong>Description:</strong>
 <p>Weather App. To see more, click on the link below </p>
-<a href="https://cloud-app.netlify.com" target="_blank">Typewriter effect</a>
+<a href="https://cloud-app.netlify.com" target="_blank">CloudApp</a>
