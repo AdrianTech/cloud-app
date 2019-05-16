@@ -29,7 +29,6 @@ body {
       text-transform: uppercase;
       text-align: center;
       padding: 5px 0;
-      //font-family: "Asap Condensed", sans-serif;
       font-family: "Indie Flower", cursive;
       letter-spacing: 3px;
       h1 {
@@ -41,6 +40,7 @@ body {
       right: 3%;
       top: 3%;
       cursor: pointer;
+      z-index: 2;
    }
 }
 form {
@@ -89,13 +89,15 @@ button:hover {
    color: #d9d7df;
 }
 .info {
-   font-size: 20px;
    p:nth-child(1)::before {
       background-image: url("./icons/info.png");
       content: "";
       width: 30px;
       height: 30px;
       bottom: 6px;
+   }
+   span {
+      font-size: 22px;
    }
 }
 .results {
@@ -240,15 +242,26 @@ footer {
       width: 80%;
       text-align: center;
    }
+   .info span {
+      font-size: 17px;
+      position: relative;
+      left: -10px;
+      width: 100%;
+   }
 }
 @media (min-height: 1000px) {
    .results {
-      //margin: 0 auto;
       padding: 0 20px 0 60px;
-      //width: 100%;
+      width: 80%;
    }
    footer {
       position: relative;
       bottom: 0;
+   }
+   .main .lang {
+      top: 2%;
+   }
+   .info span {
+      font-size: 20px;
    }
 }
