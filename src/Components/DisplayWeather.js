@@ -46,7 +46,7 @@ const Display = props => {
       displayLanguageVersion = (
          <div className="results">
             <p className="state">
-               State on: <span>{date}</span>
+               Date: <span>{date}</span>
             </p>
             <WeatherDesc desc={desc} />
             <p>
