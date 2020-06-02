@@ -1,11 +1,11 @@
-<strong>Technology stack:</strong>
-<ul>
-  <li>HTML</li>
-  <li>SCSS</li>
-  <li>React.js</li>
-  <li>Rest API</li>
-</ul>
+### Technology stack
 
-<strong>Description:</strong>
-<p>Weather App. To see more, click on the link below </p>
-<a href="https://cloud-app.netlify.com" target="_blank">CloudApp</a>
+ - HTML
+ - SCSS
+ - React.js
+ - Rest API
+ 
+#### Description
+Weather App. To see more, click on the link below 
+#### [Cloud App](https://cloud-app.netlify.com)
+
