@@ -9,36 +9,31 @@ class Weather extends Component {
     active: false,
     data: {},
     value: "",
-    desc: "",
-    language: true
-  };
-  changeLanguage = () => {
-    this.setState(prevState => ({
-      language: !prevState.language
-    }));
+    desc: ""
   };
   componentDidMount() {
     const city = localStorage.getItem("city");
+    const lang = localStorage.getItem("lang");
     if (city) this.handleSubmit();
+    if (!lang) localStorage.setItem("lang", "pl");
   }
-
   handleSubmit = async () => {
+    let API;
     const { value } = this.state;
     if (value) localStorage.setItem("city", value);
     const city = localStorage.getItem("city");
-    if (!city) return;
-    let API;
     const lang = localStorage.getItem("lang");
+    if (!city) return;
     if (lang === "eng") {
       API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=65145ede2045440196d67207a0169147&units=metric`;
-      if (this.state.value.length < 1 && !city) {
-        alert("Należy wpisać co namniej jedną literę");
+      if (this.state.value.length < 2 && !city) {
+        alert("Miasto powinno mieć co najmniej dwie litery");
         return;
       }
     } else {
       API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=65145ede2045440196d67207a0169147&units=metric&lang=pl`;
-      if (this.state.value.length < 1 && !city) {
-        alert("You need to enter at least one letter");
+      if (this.state.value.length < 2 && !city) {
+        alert("City must have at least 3 characters");
         return;
       }
     }
@@ -63,26 +58,24 @@ class Weather extends Component {
   };
   setLanguage = lang => {
     localStorage.setItem("lang", lang);
-    this.handleSubmit();
+    const city = localStorage.getItem("city");
+    city && this.handleSubmit();
   };
-
   getValue = e => {
     this.setState({
       value: e.target.value
     });
   };
   render() {
-    const { value, language } = this.state;
-
+    const { value } = this.state;
+    const lang = localStorage.getItem("lang");
     return (
       <>
         <div className="main">
-          <div className="lang" onClick={this.changeLanguage}>
-            {language ? <img src={eng} alt="eng" onClick={() => this.setLanguage("eng")} /> : <img src={pol} alt="pl" onClick={() => this.setLanguage("pl")} />}
-          </div>
-          <div className="baner">{language ? <h1>Chmurka App</h1> : <h1>Cloud App</h1>}</div>
-          <GetValue click={this.getValue} value={value} lang={language} submit={this.handleSubmit} />
-          <DisplayWeather data={this.state} />
+          <div className="lang">{lang === "eng" ? <img src={pol} alt="eng" onClick={() => this.setLanguage("pl")} /> : <img src={eng} alt="pl" onClick={() => this.setLanguage("eng")} />}</div>
+          <div className="baner">{lang === "pl" ? <h1>Chmurka App</h1> : <h1>Cloud App</h1>}</div>
+          <GetValue click={this.getValue} value={value} lang={lang} submit={this.handleSubmit} />
+          <DisplayWeather data={this.state} lang={lang} />
         </div>
         <footer>
           Created by AdrianTech

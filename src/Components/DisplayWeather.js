@@ -1,10 +1,9 @@
 import React from "react";
 import WeatherDesc from "./WeatherDesc";
 
-const Display = ({ data }) => {
+const Display = ({ data, lang }) => {
   const { sys, wind, timezone, main, weather, name } = data.data;
   const { active, language, value } = data;
-  console.log(data);
   const isEmpty = Reflect.ownKeys(data.data).length === 0 && data.data.constructor === Object;
   let sunriseTime;
   let sunsetTime;
@@ -20,13 +19,12 @@ const Display = ({ data }) => {
   }
   const showError = <span className="notFound">{language ? `Nie ma w bazie ${value}` : `${value} not found`}</span>;
   let displayLanguageVersion = null;
-  if (!isEmpty && language) {
+  if (!isEmpty && lang === "pl") {
     displayLanguageVersion = (
       <div className="results">
         <p className="state">
           Stan na: <span>{date}</span>
         </p>
-
         <WeatherDesc desc={weather} />
         <p>
           Miasto:
@@ -55,7 +53,7 @@ const Display = ({ data }) => {
         </p>
       </div>
     );
-  } else if (!isEmpty && !language) {
+  } else if (!isEmpty && lang === "eng") {
     displayLanguageVersion = (
       <div className="results">
         <p className="state">
